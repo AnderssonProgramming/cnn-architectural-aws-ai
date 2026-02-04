@@ -80,15 +80,59 @@ The dataset must meet the following constraints:
 
 | Property | Description |
 |----------|-------------|
-| **Name** | [Dataset Name] |
-| **Source** | [TensorFlow Datasets / PyTorch torchvision / Kaggle] |
-| **Size** | [Number of samples] |
-| **Classes** | [Number of classes and names] |
-| **Image Dimensions** | [Height x Width x Channels] |
+| **Name** | Mars Surface Image (Curiosity rover) Labeled Data Set |
+| **Source** | [NASA Open Data Portal](https://data.nasa.gov/) / [Zenodo DOI: 10.5281/zenodo.1049137](https://zenodo.org/record/1049137) |
+| **Size** | 6,691 images |
+| **Classes** | 24 classes |
+| **Image Dimensions** | ~256 x 256 pixels (browse version) |
+| **Collection Period** | Sols 3 to 1060 (August 2012 to July 2015) |
+
+#### Dataset Description
+
+This dataset consists of 6,691 images spanning 24 classes collected by the **Mars Science Laboratory (MSL, Curiosity)** rover using three instruments:
+- **Mastcam Right eye**
+- **Mastcam Left eye**
+- **MAHLI** (Mars Hand Lens Imager)
+
+The images are the "browse" version of each original data product (not full resolution), roughly 256x256 pixels each. The dataset is divided into train, validation, and test sets according to their sol (Martian day) of acquisition, modeling how the system will be used operationally with an image archive that grows over time.
+
+#### Dataset Contents
+
+```
+msl-images/
+├── calibrated/                      # Directory containing calibrated MSL images
+├── train-calibrated-shuffled.txt    # Training labels (images in shuffled order)
+├── val-calibrated-shuffled.txt      # Validation labels
+├── test-calibrated-shuffled.txt     # Test labels
+├── msl_synset_words-indexed.txt     # Mapping from class IDs to class names
+└── README.txt                       # Original dataset documentation
+```
+
+#### Contributors
+
+- **Alice Stanboli** - NASA Jet Propulsion Laboratory
+- **Kiri Wagstaff** - NASA Jet Propulsion Laboratory
+- **Joy Crisp** - NASA Jet Propulsion Laboratory
+
+#### Attribution & Citation
+
+If you use this dataset, please cite:
+
+> **DOI:** [10.5281/zenodo.1049137](https://doi.org/10.5281/zenodo.1049137)
+
+> Kiri L. Wagstaff, You Lu, Alice Stanboli, Kevin Grimes, Thamme Gowda, and Jordan Padams. **"Deep Mars: CNN Classification of Mars Imagery for the PDS Imaging Atlas."** *Proceedings of the Thirtieth Annual Conference on Innovative Applications of Artificial Intelligence*, 2018.
+
+Full-size images can be obtained from the PDS at: https://pds-imaging.jpl.nasa.gov/search/
 
 ### Justification
 
-[Explanation of why this dataset is appropriate for convolutional layers]
+This dataset is ideal for exploring convolutional neural networks because:
+
+1. **Real-world scientific data**: Images collected by NASA's Curiosity rover represent authentic planetary science data, providing meaningful context for CNN exploration.
+2. **Multi-class classification**: With 24 distinct classes, the dataset offers sufficient complexity to evaluate architectural decisions.
+3. **Appropriate image size**: The ~256x256 pixel dimensions are manageable for training on standard hardware while being large enough to demonstrate convolution benefits.
+4. **Temporal split strategy**: The train/validation/test division by sol (Martian day) models real operational scenarios where new data arrives over time.
+5. **Well-documented and citable**: As a NASA dataset with proper academic citations, it meets research reproducibility standards.
 
 ## Repository Structure
 
@@ -96,7 +140,14 @@ The dataset must meet the following constraints:
 /
 ├── README.md                    # Project documentation
 ├── cnn_exploration.ipynb        # Main notebook with all experiments
-└── LICENSE                      # MIT License
+├── LICENSE                      # MIT License
+└── msl-images/                  # Mars Surface Image Dataset
+    ├── calibrated/              # Calibrated MSL images
+    ├── train-calibrated-shuffled.txt
+    ├── val-calibrated-shuffled.txt
+    ├── test-calibrated-shuffled.txt
+    ├── msl_synset_words-indexed.txt
+    └── README.txt
 ```
 
 ## Assignment Tasks
