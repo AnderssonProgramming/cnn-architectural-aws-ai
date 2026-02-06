@@ -137,7 +137,8 @@ def main():
         
         X, y = [], []
         for img_name, label in zip(image_list, label_list):
-            img_path = os.path.join(BASE_PATH, 'calibrated', img_name)
+            # img_name already contains 'calibrated/' prefix from txt file
+            img_path = os.path.join(BASE_PATH, img_name)
             if os.path.exists(img_path):
                 try:
                     img = Image.open(img_path).convert('RGB')
@@ -283,12 +284,6 @@ def main():
     print("   The Learner Lab policy explicitly denies:")
     print("   • sagemaker:CreateEndpointConfig")
     print("   • sagemaker:CreateEndpoint")
-    
-    print("\n🎬 Video Evidence Checklist:")
-    print("   □ Show this script running in SageMaker Code Editor")
-    print("   □ Show training progress (epochs)")
-    print("   □ Show final accuracy results")
-    print("   □ Show model_artifacts/ folder created")
     
     print("\n" + "=" * 70)
 

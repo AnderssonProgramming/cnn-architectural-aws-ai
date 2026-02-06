@@ -205,11 +205,12 @@ Key questions addressed:
 
 ### AWS SageMaker Training and Deployment
 
-To deploy and run this project on AWS SageMaker:
+For detailed step-by-step instructions on deploying this project on AWS SageMaker, see the **[SageMaker Setup Guide](SAGEMAKER_SETUP.md)**.
 
-1. Upload the notebook to AWS SageMaker (Studio or Notebook Instances)
-2. Train the model in SageMaker
-3. Deploy the model to a SageMaker endpoint
+Quick overview:
+1. Create a SageMaker Domain and Code Editor Space
+2. Upload the project files (notebook + dataset)
+3. Run `demo_training.py` (for Learner Lab) or the full notebook
 
 ### AWS SageMaker Execution Evidence
 
