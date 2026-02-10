@@ -311,7 +311,7 @@ The successful execution on AWS SageMaker is documented in the following video:
 The video demonstrates:
 - ✅ Notebook execution in AWS SageMaker
 - ✅ Model training completion
-- ✅ Endpoint deployment
+- ❌ Endpoint deployment
 - ✅ Inference testing
 
 ---
